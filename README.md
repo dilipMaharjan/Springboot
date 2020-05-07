@@ -1,0 +1,1 @@
+Fiddling with different SpringFramework projects
