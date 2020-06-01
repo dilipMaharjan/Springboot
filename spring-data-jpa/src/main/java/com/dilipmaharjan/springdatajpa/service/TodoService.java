@@ -1,9 +1,11 @@
 package com.dilipmaharjan.springdatajpa.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,11 +28,22 @@ public class TodoService {
 	}
 
 	public Todo update(Todo todo) {
-		return todoRepository.save(todo);
+		Todo todoEntity = todoRepository.findById(todo.getId()).get();
+		BeanUtils.copyProperties(todo, todoEntity);
+		return todoRepository.save(todoEntity);
 	}
 
 	public Todo create(Todo todo) {
 		todoRepository.save(todo);
 		return todo;
+	}
+
+	public Todo findBy(String title) {
+
+		return todoRepository.findByTitle(title);
+	}
+
+	public List<Todo> findBycreatedOnLessThanEqual(Date createdOn) {
+		return todoRepository.findBycreatedOnLessThanEqual(createdOn);
 	}
 }

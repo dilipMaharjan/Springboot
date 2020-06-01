@@ -1,5 +1,7 @@
 package com.dilipmaharjan.springboottesttdd.controller;
 
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -15,11 +17,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.dilipmaharjan.springboottesttdd.domain.Car;
 import com.dilipmaharjan.springboottesttdd.exception.CarNotFoundException;
 import com.dilipmaharjan.springboottesttdd.service.CarService;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Mockito.anyString;
-import static org.mockito.Mockito.when;
-import static org.mockito.BDDMockito.given;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(CarController.class)
